@@ -1,12 +1,12 @@
 {
-  "name": "gym",
+  "name": "fitness",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack serve --mode development",
+    "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
-  "repository": "https://github.com/yourigruiters/Gym.git",
+  "repository": "https://github.com/yourigruiters/fitness.git",
   "author": "Youri Gruiters <i-youri-i@hotmail.com>",
   "license": "MIT",
   "dependencies": {
@@ -23,6 +23,7 @@
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
+    "dotenv": "^16.0.1",
     "html-webpack-plugin": "^5.5.0",
     "postcss": "^8.4.16",
     "postcss-loader": "^7.0.1",
