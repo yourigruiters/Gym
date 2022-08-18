@@ -1,0 +1,1 @@
+Font-awesome-icon styles: https://fontawesome.com/docs/web/use-with/react/style
