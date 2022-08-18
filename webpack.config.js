@@ -46,14 +46,17 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        loader: "url-loader",
-        options: { limit: false },
-      },
-      {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
       },
     ],
   },
