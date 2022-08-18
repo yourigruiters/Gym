@@ -1,7 +1,0 @@
-// In .env
-FAKE_API_KEY=KJA34KSJFAK
-
-// In code
-<p>
-    Get key: {process.env.FAKE_API_KEY}
-</p>

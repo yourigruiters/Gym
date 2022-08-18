@@ -1,1 +1,11 @@
 Font-awesome-icon styles: https://fontawesome.com/docs/web/use-with/react/style
+TailwindCSS: https://tailwindcss.com/docs/installation
+
+DOTENV
+// In .env
+FAKE_API_KEY=KJA34KSJFAK
+
+// In code
+<p>
+    Get key: {process.env.FAKE_API_KEY}
+</p>
