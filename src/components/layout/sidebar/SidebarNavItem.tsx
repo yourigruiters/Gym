@@ -5,7 +5,7 @@ import {
   SideBarDashboardIcon,
   SideBarExercisesIcon,
   SideBarNutritionIcon,
-  SideBarProgramsIcon,
+  SideBarProgramsIcon
 } from "../../../media/icons/icons";
 
 type Pagenames = "Dashboard" | "Exercises" | "Programs" | "Nutrition";
