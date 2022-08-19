@@ -1,17 +1,10 @@
+import * as React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../media/icons/logo.png";
-import { useLocation } from "react-router-dom";
 import SidebarNavItem from "./SidebarNavItem";
 import { LinkIcon } from "../../../media/icons/icons";
 
 interface Props {}
-
-type Pagenames =
-  | "dashboard"
-  | "exercises"
-  | "programs"
-  | "nutrition"
-  | "profile";
 
 const Sidebar: React.FC<Props> = () => {
   return (

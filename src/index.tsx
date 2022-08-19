@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
@@ -13,7 +13,7 @@ import Profile from "./pages/Profile";
 const root = createRoot(document.getElementById("root"));
 
 root.render(
-  <StrictMode>
+  <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
@@ -34,5 +34,5 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  </React.StrictMode>
 );
