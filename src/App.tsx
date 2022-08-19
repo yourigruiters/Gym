@@ -1,8 +1,7 @@
-import Routing from "./components/Routing";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/layout/sidebar/Sidebar";
 
-type Props = {};
+interface Props {}
 
 const App: React.FC<Props> = () => {
   return (
@@ -10,7 +9,6 @@ const App: React.FC<Props> = () => {
       <div className="flex flex-row">
         <Sidebar />
         <div className="flex w-full h-full">
-          <Routing />
           <Outlet />
         </div>
       </div>
