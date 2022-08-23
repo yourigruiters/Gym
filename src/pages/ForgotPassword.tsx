@@ -6,14 +6,13 @@ import Logo from "../media/icons/logo.png";
 
 interface Props {}
 
-const Login: React.FC<Props> = () => {
+const ForgotPassword: React.FC<Props> = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(email, password);
+    console.log(email);
   };
 
   return (
@@ -34,27 +33,21 @@ const Login: React.FC<Props> = () => {
             setEmail(e.currentTarget.value)
           }
         />
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e: React.FormEvent<HTMLInputElement>) =>
-            setPassword(e.currentTarget.value)
-          }
+        <Button
+          type="submit"
+          classDecider="submit"
+          value="Request password reset"
         />
-        <Button type="submit" classDecider="submit" value="Log in" />
-        <Link to="/account/forgotpassword">
-          <p className="hover:font-semibold">Forgot your password?</p>
-        </Link>
       </form>
       <div className="flex flex-row items-center justify-between w-full">
-        <p>Don't have an account?</p>
-        <Link to="/account/signup">
-          <Button classDecider="outlined" value="Sign up" />
+        <p>Already have an account?</p>
+
+        <Link to="/account/login">
+          <Button classDecider="outlined" value="Log in" />
         </Link>
       </div>
     </>
   );
 };
 
-export default Login;
+export default ForgotPassword;

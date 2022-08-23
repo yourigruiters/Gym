@@ -12,6 +12,8 @@ import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import DashboardOutlet from "./pages/outlets/DashboardOutlet";
 import AccountOutlet from "./pages/outlets/AccountOutlet";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -29,6 +31,8 @@ root.render(
           </Route>
           <Route path="account/" element={<AccountOutlet />}>
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="forgotpassword" element={<ForgotPassword />} />
           </Route>
           <Route
             path="*"
