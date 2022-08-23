@@ -9,6 +9,7 @@ import Exercises from "./pages/Exercises";
 import Programs from "./pages/Programs";
 import Nutrition from "./pages/Nutrition";
 import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
 const root = createRoot(document.getElementById("root"));
 
@@ -32,6 +33,7 @@ root.render(
             }
           />
         </Route>
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
