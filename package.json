@@ -9,6 +9,7 @@
   "repository": "https://github.com/yourigruiters/fitness.git",
   "author": "Youri Gruiters <i-youri-i@hotmail.com>",
   "license": "MIT",
+  "homepage": "/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",

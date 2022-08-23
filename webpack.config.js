@@ -16,21 +16,22 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "bundle.js",
+    publicPath: "/"
   },
   devtool: "inline-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: "src/index.html"
     }),
-    new webpack.DefinePlugin(envKeys),
+    new webpack.DefinePlugin(envKeys)
   ],
   devServer: {
     port: 3030,
     historyApiFallback: true,
-    hot: true,
+    hot: true
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", "jsx"],
+    extensions: [".tsx", ".ts", ".js", "jsx"]
   },
   module: {
     rules: [
@@ -38,26 +39,26 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-        },
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.(sa|sc|c)ss$/,
-        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
+        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"]
       },
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         use: [
           {
-            loader: "file-loader",
-          },
-        ],
-      },
-    ],
-  },
+            loader: "file-loader"
+          }
+        ]
+      }
+    ]
+  }
 };
