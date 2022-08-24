@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import Warning from "../components/form/Warning";
 import { auth } from "../firebase";
 import Logo from "../media/icons/logo.png";
 
@@ -51,6 +52,10 @@ const Signup: React.FC<Props> = () => {
     }
   };
 
+  const resetError = () => {
+    setError("");
+  };
+
   return (
     <>
       <div className="flex flex-col pb-10 items-center">
@@ -61,7 +66,7 @@ const Signup: React.FC<Props> = () => {
         className="flex flex-col pb-10 items-center gap-y-4 w-full"
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSignup(e)}
       >
-        {error ? <p className="text-red-700">{error}</p> : ""}
+        {error && <Warning message={error} onClick={resetError} />}
         <Input
           type="email"
           placeholder="Email"

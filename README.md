@@ -1,3 +1,3 @@
-# Gym
+# Fitness Tracking
 
 Starting...
