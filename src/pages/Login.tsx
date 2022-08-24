@@ -1,7 +1,9 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import { auth } from "../firebase";
 import Logo from "../media/icons/logo.png";
 
 interface Props {}
@@ -9,11 +11,38 @@ interface Props {}
 const Login: React.FC<Props> = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Will be handled
+        console.log(userCredential);
+      })
+      .catch((err) => {
+        const errorCode = err.code;
+
+        switch (errorCode) {
+          case "auth/internal-error":
+            setError("Please enter a valid password.");
+            break;
+          case "auth/invalid-email":
+            setError("Please enter a valid email.");
+            break;
+          case "auth/user-not-found":
+            setError("This email does not belong to an account.");
+            break;
+          case "auth/wrong-password":
+            setError("The entered password is incorrect.");
+            break;
+          default:
+            console.log(errorCode);
+            setError("Unknown error - Not documented");
+            break;
+        }
+      });
   };
 
   return (
@@ -26,6 +55,7 @@ const Login: React.FC<Props> = () => {
         className="flex flex-col pb-10 items-center gap-y-4 w-full"
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleLogin(e)}
       >
+        {error ? <p className="text-red-700">{error}</p> : ""}
         <Input
           type="email"
           placeholder="Email"

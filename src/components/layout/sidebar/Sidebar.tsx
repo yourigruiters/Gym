@@ -15,7 +15,7 @@ const Sidebar: React.FC<Props> = () => {
         </div>
         <nav className="h-full flex flex-col">
           <ul className="flex flex-col gap-y-2">
-            <SidebarNavItem title="Dashboard" />
+            <SidebarNavItem title="Home" />
             <SidebarNavItem title="Exercises" />
             <SidebarNavItem title="Programs" />
             <SidebarNavItem title="Nutrition" />
@@ -29,7 +29,7 @@ const Sidebar: React.FC<Props> = () => {
         <div className="flex flex-col justify-center">
           <h3 className="text-base text-white font-semibold">Youri Gruiters</h3>
           <div className="flex flex-row items-center text-white hover:font-semibold hover:text-slate-200 cursor-pointer gap-x-1">
-            <Link to="/profile">
+            <Link to="/dashboard/profile">
               <p className="text-sm">View profile</p>
             </Link>
             <LinkIcon />

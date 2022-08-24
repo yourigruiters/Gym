@@ -1,18 +1,42 @@
+import { sendPasswordResetEmail } from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import { auth } from "../firebase";
 import Logo from "../media/icons/logo.png";
 
 interface Props {}
 
 const ForgotPassword: React.FC<Props> = () => {
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleReset = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(email);
+    sendPasswordResetEmail(auth, email)
+      .then((userCredential) => {
+        // Will be handled - Provide message in screen and remove option to do it again.
+        // CHECK SPAM FOLDER
+        console.log(userCredential);
+      })
+      .catch((err) => {
+        const errorCode = err.code;
+
+        switch (errorCode) {
+          case "auth/missing-email":
+            setError("Please enter a valid email.");
+            break;
+          case "auth/user-not-found":
+            setError("This email does not belong to an account.");
+            break;
+          default:
+            console.log(errorCode);
+            setError("Unknown error - Not documented");
+            break;
+        }
+      });
   };
 
   return (
@@ -23,8 +47,9 @@ const ForgotPassword: React.FC<Props> = () => {
       </div>
       <form
         className="flex flex-col pb-10 items-center gap-y-4 w-full"
-        onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleLogin(e)}
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleReset(e)}
       >
+        {error ? <p className="text-red-700">{error}</p> : ""}
         <Input
           type="email"
           placeholder="Email"

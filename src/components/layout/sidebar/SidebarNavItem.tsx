@@ -8,7 +8,7 @@ import {
   SideBarProgramsIcon
 } from "../../../media/icons/icons";
 
-type Pagenames = "Dashboard" | "Exercises" | "Programs" | "Nutrition";
+type Pagenames = "Home" | "Exercises" | "Programs" | "Nutrition";
 
 interface Props {
   title: Pagenames;
@@ -27,7 +27,7 @@ const SidebarNavItem: React.FC<Props> = ({ title }) => {
 
   const getIcon = (pagename: Pagenames) => {
     switch (pagename) {
-      case "Dashboard":
+      case "Home":
         return <SideBarDashboardIcon />;
       case "Exercises":
         return <SideBarExercisesIcon />;
@@ -39,7 +39,7 @@ const SidebarNavItem: React.FC<Props> = ({ title }) => {
   };
 
   return (
-    <Link to={`/${title.toLowerCase()}`}>
+    <Link to={`/dashboard/${title.toLowerCase()}`}>
       <li className={getClassnames(title)}>
         {getIcon(title)}
         <p className="pl-2">{title}</p>
