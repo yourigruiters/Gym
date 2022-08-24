@@ -66,7 +66,7 @@ const ForgotPassword: React.FC<Props> = () => {
           <Button
             type="submit"
             classDecider="submit"
-            value="Request password reset"
+            value="Request reset email"
           />
         </form>
       ) : (
@@ -78,7 +78,7 @@ const ForgotPassword: React.FC<Props> = () => {
         </div>
       )}
       <div className="flex flex-row items-center justify-between w-full">
-        <p>Already have an account?</p>
+        <p>Ready to log in again?</p>
 
         <Link to="/account/login">
           <Button classDecider="outlined" value="Log in" />

@@ -18,7 +18,7 @@ const SidebarNavItem: React.FC<Props> = ({ title }) => {
   const location = useLocation().pathname.replace("/", "");
 
   const getClassnames = (pagename: Pagenames) => {
-    if (pagename.toLocaleLowerCase() === location) {
+    if (location.includes(pagename.toLocaleLowerCase())) {
       return "rounded-md bg-slate-900 p-2 items-center flex text-white";
     }
 
