@@ -1,10 +1,11 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
 import Warning from "../components/form/Warning";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import Logo from "../media/icons/logo.png";
 
 interface Props {}
@@ -15,38 +16,46 @@ const Signup: React.FC<Props> = () => {
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
 
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password === passwordRepeat) {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Will be handled
-          console.log(userCredential);
-          //   CREATE ACCOUNT IN DATABASE FOR THIS USER
-        })
-        .catch((err) => {
-          const errorCode = err.code;
+      try {
+        const response = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
 
-          switch (errorCode) {
-            case "auth/weak-password":
-              setError("Password is to weak.");
-              break;
-            case "auth/internal-error":
-              setError("Please enter a valid password.");
-              break;
-            case "auth/invalid-email":
-              setError("Please enter a valid email.");
-              break;
-            case "auth/email-already-in-use":
-              setError("This email already belongs to an account.");
-              break;
-            default:
-              console.log(errorCode);
-              setError("Unknown error - Not documented");
-              break;
-          }
-        });
+        const userData = {
+          name: "Henk"
+        };
+
+        if (response.user.uid) {
+          await setDoc(doc(db, "profiles", response.user.uid), userData);
+        }
+      } catch (err) {
+        const errorCode = err.code;
+
+        switch (errorCode) {
+          case "auth/weak-password":
+            setError("Password is to weak.");
+            break;
+          case "auth/internal-error":
+            setError("Please enter a valid password.");
+            break;
+          case "auth/invalid-email":
+            setError("Please enter a valid email.");
+            break;
+          case "auth/email-already-in-use":
+            setError("This email already belongs to an account.");
+            break;
+          default:
+            console.log(errorCode, err.message);
+            setError("Unknown error - Not documented");
+            break;
+        }
+      }
     } else {
       setError("Passwords do not match.");
     }

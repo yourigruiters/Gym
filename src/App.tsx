@@ -21,9 +21,7 @@ const App: React.FC<Props> = () => {
       }
     });
 
-    console.log(user);
     if (!user && !location.pathname.includes("/account")) {
-      console.log("Signed out somehow, sending to login");
       navigate("/account/login");
     }
   }, [user]);

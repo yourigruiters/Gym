@@ -18,9 +18,8 @@ const Login: React.FC<Props> = () => {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Will be handled
-        console.log(userCredential);
+      .then(() => {
+        // User logged in, will be handled by App.tsx - onAuthStateChanged.
       })
       .catch((err) => {
         const errorCode = err.code;
